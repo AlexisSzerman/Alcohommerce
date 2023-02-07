@@ -8,7 +8,8 @@ import {
   CardFooter,
   Box,
   Flex,
-  Spacer
+  Spacer,
+  Text,
 } from "@chakra-ui/react";
 
 function ItemCount({ stock, initial, onAdd }) {
@@ -23,24 +24,34 @@ function ItemCount({ stock, initial, onAdd }) {
   };
 
   return (
-    <Card maxW='sm'>
-      <CardBody bg='#E2E8F0'>
-      <Flex minWidth="max-content" alignItems="center">
-          <Button colorScheme="teal" variant="outline" size="xs">
-            <button onClick={restar}>-</button>
+    <Card maxW="sm">
+      <CardBody bg="#E2E8F0">
+        <Flex minWidth="max-content" alignItems="center">
+          <Button
+            colorScheme="teal"
+            variant="outline"
+            size="xs"
+            fontSize="lg"
+            onClick={restar}>
+            -
           </Button>
           <Spacer />
           <p>{count}</p>
           <Spacer />
-          <Button colorScheme="teal" variant="outline" size="xs">
-            <button onClick={sumar}>+</button>
+          <Button
+            colorScheme="teal"
+            variant="outline"
+            size="xs"
+            fontSize="lg"
+            onClick={sumar}>
+            +
           </Button>
           <Spacer />
-          <Button c colorScheme="teal" size="sm">
-            {count >= initial && (
-              <button onClick={() => onAdd(count)}>Agregar al carrito</button>
-            )}
-          </Button>
+          {count >= initial && (
+            <Button colorScheme="teal" size="sm"  fontSize="lg" onClick={() => onAdd(count)}>
+              Agregar al carrito
+            </Button>
+          )}
           <Spacer />
         </Flex>
       </CardBody>
