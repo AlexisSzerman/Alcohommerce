@@ -10,7 +10,13 @@ import {
   Flex,
   Spacer,
   Text,
+  IconButton
 } from "@chakra-ui/react";
+import { Icon,
+  AddIcon,
+  MinusIcon 
+} from '@chakra-ui/icons'
+
 
 function ItemCount({ stock, initial, onAdd }) {
   const [count, setCount] = useState(initial);
@@ -27,25 +33,29 @@ function ItemCount({ stock, initial, onAdd }) {
     <Card maxW="sm">
       <CardBody bg="#E2E8F0">
         <Flex minWidth="max-content" alignItems="center">
-          <Button
+        {/*   <Button
             colorScheme="teal"
             variant="outline"
             size="xs"
             fontSize="lg"
             onClick={restar}>
             -
-          </Button>
+          </Button> */}
+<IconButton icon={<MinusIcon /> } onClick={restar} colorScheme="teal"
+            variant="outline"/>
           <Spacer />
           <p>{count}</p>
           <Spacer />
-          <Button
+         {/*  <Button
             colorScheme="teal"
             variant="outline"
             size="xs"
             fontSize="lg"
             onClick={sumar}>
             +
-          </Button>
+          </Button> */}
+<IconButton icon={<AddIcon/>} onClick={sumar} colorScheme="teal"
+            variant="outline"/>
           <Spacer />
           {count >= initial && (
             <Button colorScheme="teal" size="sm"  fontSize="lg" onClick={() => onAdd(count)}>
@@ -60,3 +70,6 @@ function ItemCount({ stock, initial, onAdd }) {
 }
 
 export default ItemCount;
+
+
+

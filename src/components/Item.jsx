@@ -1,5 +1,9 @@
 import React from 'react';
-import {Heading} from "@chakra-ui/react";
+import {Heading,
+  Button
+} from "@chakra-ui/react";
+
+
 
 const Item = ({ item }) => {
   return (
@@ -7,8 +11,8 @@ const Item = ({ item }) => {
       <img src={item.pictureUrl} alt={item.title + " " + item.brand} width="180px" height="auto" />
       <Heading as='h3' size='md'>{item.title}</Heading>
       <Heading as='h4' size='md'>{item.brand}</Heading>
-      <p>{item.description}</p>
       <p>Precio: ${item.price}</p>
+      <Button colorScheme='blue'>Ver Detalle</Button>
     </div>
   );
 };
