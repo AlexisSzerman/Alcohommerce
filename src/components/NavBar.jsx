@@ -47,6 +47,7 @@ const NavBar = () => {
                 Categorías
               </MenuButton>
               <MenuList color="black">
+              <Link to={`/category/${"Cervezas"}`}>
                 <MenuItem
                   _hover={{ bg: "grey", color: "white" }}
                   _focus={{ outline: "none" }}
@@ -54,14 +55,19 @@ const NavBar = () => {
                   <Icon as={FaBeer} boxSize={4} mr={2} />
                   Cervezas
                 </MenuItem>
+              </Link>
+              <Link to={`/category/${"Vinos y Espumantes"}`}>
                 <MenuItem _hover={{ bg: "grey", color: "white" }}>
                   <Icon as={FaWineBottle} boxSize={4} mr={2} />
                   Vinos y Espumantes
                 </MenuItem>
+                </Link>
+                <Link to={`/category/${"Espirituosas"}`}>
                 <MenuItem _hover={{ bg: "grey", color: "white" }}>
                   <Icon as={FaCocktail} boxSize={4} mr={2} />
                   Espirituosas
                 </MenuItem>
+                </Link>
               </MenuList>
             </Menu>
             <Spacer />

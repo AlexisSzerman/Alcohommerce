@@ -7,16 +7,6 @@ const ItemListContainer = () => {
   const [items, setItems] = useState([]);
   const { category } = useParams();
 
-  /* useEffect(() => {
-    const fetchItems = async () => {
-      const response = await fetch("../items.json");
-      const data = await response.json();
-      setTimeout(() => {
-        setItems(data);
-      }, 2000); 
-    };
-    fetchItems();
-  }, []); */
   useEffect(() => {
     const fetchItems = async () => {
       try {
