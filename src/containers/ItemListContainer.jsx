@@ -1,9 +1,9 @@
 import React from "react";
-import { Heading } from "@chakra-ui/react";
+
 import ItemList from "../components/ItemList";
 import { useState, useEffect } from "react";
 
-const ItemListContainer = ({ greeting }) => {
+const ItemListContainer = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -26,10 +26,10 @@ const ItemListContainer = ({ greeting }) => {
 
   return (
     <section>
-      <Heading as="h4" size="md">{greeting}</Heading>
       <ItemList items={items} />;
     </section>
   );
 };
 
 export default ItemListContainer;
+      

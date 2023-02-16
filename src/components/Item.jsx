@@ -2,6 +2,7 @@ import React from 'react';
 import {Heading,
   Button
 } from "@chakra-ui/react";
+import { Link } from 'react-router-dom'
 
 
 
@@ -18,6 +19,7 @@ const Item = ({ item }) => {
 };
 
 export default Item;
+      
       
 
 

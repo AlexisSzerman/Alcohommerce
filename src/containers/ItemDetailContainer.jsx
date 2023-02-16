@@ -73,11 +73,11 @@ const ItemDetailContainer = () => {
   return (
     <>
       <ItemDetail items={items} />;
-     
     </>
      
   );
 };
+     
 
 export default ItemDetailContainer
 

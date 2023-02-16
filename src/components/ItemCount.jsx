@@ -33,28 +33,12 @@ function ItemCount({ stock, initial, onAdd }) {
     <Card maxW="sm">
       <CardBody bg="#E2E8F0">
         <Flex minWidth="max-content" alignItems="center">
-        {/*   <Button
-            colorScheme="teal"
-            variant="outline"
-            size="xs"
-            fontSize="lg"
-            onClick={restar}>
-            -
-          </Button> */}
-<IconButton icon={<MinusIcon /> } onClick={restar} colorScheme="teal"
+          <IconButton icon={<MinusIcon /> } onClick={restar} colorScheme="teal"
             variant="outline"/>
           <Spacer />
           <p>{count}</p>
           <Spacer />
-         {/*  <Button
-            colorScheme="teal"
-            variant="outline"
-            size="xs"
-            fontSize="lg"
-            onClick={sumar}>
-            +
-          </Button> */}
-<IconButton icon={<AddIcon/>} onClick={sumar} colorScheme="teal"
+          <IconButton icon={<AddIcon/>} onClick={sumar} colorScheme="teal"
             variant="outline"/>
           <Spacer />
           {count >= initial && (
