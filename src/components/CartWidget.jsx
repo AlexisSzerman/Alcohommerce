@@ -5,8 +5,8 @@ import { BsCart4 } from "react-icons/bs";
 const CartWidget = () => {
   return (
    
-   <Box position="relative" display="inline-block" mr={4}>
-      <Icon as={BsCart4} boxSize={6} />
+   <Box position="relative" display="inline-block" mr={4} border='1px' borderColor='gray.200' borderRadius={4} p={2} _hover={{ bg: "grey", color: "white" }}>
+      <Icon as={BsCart4} boxSize={6}  />
       <Box
         position="absolute"
         top="-10px"
