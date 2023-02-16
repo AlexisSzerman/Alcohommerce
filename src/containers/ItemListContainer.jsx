@@ -7,13 +7,30 @@ const ItemListContainer = () => {
   const [items, setItems] = useState([]);
   const { category } = useParams();
 
-  useEffect(() => {
+  /* useEffect(() => {
     const fetchItems = async () => {
       const response = await fetch("../items.json");
       const data = await response.json();
       setTimeout(() => {
         setItems(data);
       }, 2000); 
+    };
+    fetchItems();
+  }, []); */
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const response = await fetch("../items.json");
+        const data = await response.json();
+        setTimeout(() => {
+          setItems(data);
+        }, 2000); 
+        if (data.length === 0) {
+          return new Error("No hay datos");
+        }
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetchItems();
   }, []);
@@ -28,6 +45,9 @@ const ItemListContainer = () => {
 };
 
 export default ItemListContainer;
+
+
+
 
 
 

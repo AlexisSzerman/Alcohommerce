@@ -42,7 +42,7 @@ function ItemCount({ stock, initial, onAdd }) {
             variant="outline"/>
           <Spacer />
           {count >= initial && (
-            <Button colorScheme="teal" size="sm"  fontSize="lg" onClick={() => onAdd(count)}>
+            <Button colorScheme="teal" size="sm"  fontSize="lg" /* onClick={() => onAdd(count)} */>
               Agregar al carrito
             </Button>
           )}

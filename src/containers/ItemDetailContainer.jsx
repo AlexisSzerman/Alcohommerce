@@ -1,87 +1,42 @@
-import React from 'react'
 import ItemDetail from '../components/ItemDetail'
-import items from '/items.json'
 import { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import items from "/items.json";
+import { useParams } from "react-router";
 
 const ItemDetailContainer = () => {
-  const [itemsData, setItemsData] = useState([]);
   const { id } = useParams();
-
-  const getItemById = (id) => {
-    return new Promise((resolve, reject) => {
-      const item = items.find((item) => item.id === id);
-      if (!item) {
-        reject(new Error("No se encontró el item"));
-      }
-      setTimeout(() => {
-        resolve(item);
-      }, 2000);
-    });
-  };
+  const [product, setProduct] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
+    const getProductId = () => {
+      return new Promise((resolve, reject) => {
+        if (items.length === 0) {
+          reject(new Error("No hay datos"));
+        }
+        setTimeout(() => {
+          const idFilter = items.filter((item) => item.id == id);
+          resolve(idFilter);
+        }, 2000);
+      });
+    };
+
+    async function fetchingData() {
       try {
-        const item = await getItemById(id);
-        setItemsData([item]);
-      } catch (error) {
-        console.log(error);
+        const datosFetched = await getProductId();
+        setProduct(datosFetched);
+      } catch (err) {
+        console.log(err);
       }
     }
-    fetchData();
+    fetchingData();
   }, [id]);
 
-  return (
-    <>
-      <ItemDetail items={itemsData} />;
-    </>
-  );
+
+  return <ItemDetail product={product} />;
 };
 
 export default ItemDetailContainer;
 
 
-/* import React from 'react'
-import ItemDetail from '../components/ItemDetail'
-import items from '/items.json'
-import { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
-
-const ItemDetailContainer = () => {
-  const [product, setProduct] = useState([]);
-  const { id } = useParams();
-  
-  const getDatos = () => {
-    return new Promise((resolve, reject) => {
-      if (items.length === 0) {
-        reject(new Error("No hay items"));
-      }
-      setTimeout(() => {
-        const productFilter = items.filter((item) => item.id === id);
-        resolve(productFilter);
-      }, 2000);
-    });
-  };
-
-  
-  useEffect(() => {
-  async function fetchingData() {
-    try {
-      const datosFetched = await getDatos();
-      setProduct(datosFetched);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  fetchingData();
-}, []);
-  
-  
-  return <ItemDetail product={product} />;
-};
-
-export default ItemDetailContainer; */
 
 
