@@ -4,7 +4,8 @@ import { BsCart4 } from "react-icons/bs";
 
 const CartWidget = () => {
   return (
-    <Box position="relative" display="inline-block" mr={4}>
+   
+   <Box position="relative" display="inline-block" mr={4}>
       <Icon as={BsCart4} boxSize={6} />
       <Box
         position="absolute"
@@ -20,7 +21,7 @@ const CartWidget = () => {
         fontWeight="bold"
         lineHeight="1.2"
       >
-        5
+        2
       </Box>
     </Box>
   );

@@ -17,13 +17,5 @@ const ItemList = ({ items }) => {
   );
 }; 
 
-/* const ItemList = () => {
-  return (
-    <div>
-      
-      
-    </div>
-  );
-};  */
 
 export default ItemList;

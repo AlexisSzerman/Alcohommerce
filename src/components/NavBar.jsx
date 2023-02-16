@@ -19,7 +19,7 @@ import { FaBeer, FaWineBottle, FaCocktail } from "react-icons/fa";
 const NavBar = () => {
   return (
     <nav>
-      <Box bg="black" w="100%" p={3} color="white">
+      <Box bg="black" w="100%" p={3} color="white" >
         <Box>
           <Flex minWidth="max-content" alignItems="center">
             <Box />
@@ -28,21 +28,48 @@ const NavBar = () => {
             </Link>
             <Spacer />
 
-            <Menu >
-            <Button colorScheme= 'dark' _hover={{ bg: "grey", color: "white" }} mr={4}>
+            <Menu>
+             
+            <Link to="/catalogue">
+              <Button colorScheme="dark" _hover={{ bg: "grey", color: "white" }} mr={4} variant="outline">
                 Todos los productos
               </Button>
-              <MenuButton as={Button} colorScheme= 'dark' rightIcon={<ChevronDownIcon />} _hover={{ bg: "grey", color: "white" }}>
+              </Link>
+              
+
+              <MenuButton
+                as={Button}
+                colorScheme="dark"
+                rightIcon={<ChevronDownIcon />}
+                _hover={{ bg: "grey", color: "white" }}
+                variant="outline"
+              >
                 Categorías
               </MenuButton>
-              <MenuList  color="black" >
-                <MenuItem _hover={{ bg: "grey", color: "white" }} _focus={{ outline: "none" }}><Icon as={FaBeer} boxSize={4} mr={2} />Cervezas</MenuItem>
-                <MenuItem _hover={{ bg: "grey", color: "white" }}><Icon as={FaWineBottle} boxSize={4} mr={2} />Vinos y Espumantes</MenuItem>
-                <MenuItem _hover={{ bg: "grey", color: "white" }}><Icon as={FaCocktail} boxSize={4} mr={2}/>Espirituosas</MenuItem>
+              <MenuList color="black">
+                <MenuItem
+                  _hover={{ bg: "grey", color: "white" }}
+                  _focus={{ outline: "none" }}
+                >
+                  <Icon as={FaBeer} boxSize={4} mr={2} />
+                  Cervezas
+                </MenuItem>
+                <MenuItem _hover={{ bg: "grey", color: "white" }}>
+                  <Icon as={FaWineBottle} boxSize={4} mr={2} />
+                  Vinos y Espumantes
+                </MenuItem>
+                <MenuItem _hover={{ bg: "grey", color: "white" }}>
+                  <Icon as={FaCocktail} boxSize={4} mr={2} />
+                  Espirituosas
+                </MenuItem>
               </MenuList>
             </Menu>
             <Spacer />
+           
+           <Link to="/cart">
             <CartWidget />
+            </Link>
+         
           </Flex>
         </Box>
       </Box>
@@ -51,5 +78,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
- 

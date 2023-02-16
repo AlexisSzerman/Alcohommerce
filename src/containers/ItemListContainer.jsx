@@ -1,17 +1,13 @@
 import React from "react";
-
 import ItemList from "../components/ItemList";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
+  const { category } = useParams();
 
   useEffect(() => {
-    /* const fetchItems = async () => {
-      const response = await fetch("../items.json");
-      const data = await response.json();
-      setItems(data);
-    }; */
     const fetchItems = async () => {
       const response = await fetch("../items.json");
       const data = await response.json();
@@ -19,17 +15,23 @@ const ItemListContainer = () => {
         setItems(data);
       }, 2000); 
     };
-    
-
     fetchItems();
   }, []);
 
+  const categoryFilter = items.filter((item) => item.category === category);
+
   return (
     <section>
-      <ItemList items={items} />;
+       {category ? <ItemList items={categoryFilter} /> : <ItemList items={items} />}
     </section>
   );
 };
 
 export default ItemListContainer;
-      
+
+
+
+
+
+
+
