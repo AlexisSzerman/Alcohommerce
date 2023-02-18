@@ -4,8 +4,7 @@
 
 Este es un proyecto para el curso de **ReactJs** de Coderhouse, que consiste en un e-commece de bebidas alcohólicas.
 
-
-
+![Proyecto](src/assets/Alcohommerce-Google-Chrome-2023-02-18-18-55-58.gif)
  ---
  ### _Lenguajes y herramientas utilizados_
 

@@ -66,6 +66,7 @@
         "description": "Ron Havana Club Añejo 3 años 750ml - Origen: Cuba",
         "price": 3000,
         "category":"Espirituosas",
+        "stock": 45,
         "pictureUrl": "https://images2.imgbox.com/04/a7/0r8pZnpt_o.png"
     },
     {

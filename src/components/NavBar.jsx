@@ -22,16 +22,14 @@ const NavBar = () => {
         <Box>
           <Flex minWidth="max-content" alignItems="center">
             <Box />
-            <Spacer />
             
-
+            <Spacer />
             <Link to="/">
-       
               <Heading>🍸 Alcohommerce</Heading>
             </Link>
             <Spacer />
             
-      <Tabs variant='soft-rounded' colorScheme='green'>
+      <Tabs variant='soft-rounded' colorScheme='green' aria-selected='true'>
         <TabList>
            
             <Link to="/catalogue">
@@ -76,4 +74,7 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+       
+            
 

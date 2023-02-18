@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
-  const { category } = useParams();
+  const { categoryId } = useParams();
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -25,11 +25,11 @@ const ItemListContainer = () => {
     fetchItems();
   }, []);
 
-  const categoryFilter = items.filter((item) => item.category === category);
+  const categoryFilter = items.filter((item) => item.category === categoryId);
 
   return (
     <>
-       {category ? <ItemList items={categoryFilter} /> : <ItemList items={items} />}
+       {categoryId ? <ItemList items={categoryFilter} /> : <ItemList items={items} />}
     </>
   );
 };
