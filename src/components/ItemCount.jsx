@@ -2,15 +2,10 @@ import React from "react";
 import { useState } from "react";
 import {
   Button,
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Box,
   Flex,
   Spacer,
   Text,
-  IconButton
+  IconButton,
 } from "@chakra-ui/react";
 import { Icon,
   AddIcon,
@@ -30,26 +25,27 @@ function ItemCount({ stock, initial, onAdd }) {
   };
 
   return (
-    <Card maxW="sm">
-      <CardBody bg="#E2E8F0">
+    
+
         <Flex minWidth="max-content" alignItems="center">
           <IconButton icon={<MinusIcon /> } onClick={restar} colorScheme="teal"
-            variant="outline"/>
-          <Spacer />
-          <p>{count}</p>
-          <Spacer />
+            variant="outline" mr={4}/>
+    
+          <Text>{count}</Text>
+      
           <IconButton icon={<AddIcon/>} onClick={sumar} colorScheme="teal"
-            variant="outline"/>
-          <Spacer />
+            variant="outline" ml={4} mr={4}/>
+      
           {count >= initial && (
-            <Button colorScheme="teal" size="sm"  fontSize="lg" /* onClick={() => onAdd(count)} */>
+            <Button colorScheme='green' size="sm"  fontSize="lg" /* onClick={() => onAdd(count)} */>
               Agregar al carrito
             </Button>
           )}
-          <Spacer />
+      
         </Flex>
-      </CardBody>
-    </Card>
+
+      
+  
   );
 }
 

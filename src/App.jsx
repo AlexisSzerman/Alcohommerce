@@ -4,13 +4,16 @@ import ItemListContainer from "./containers/ItemListContainer";
 import ItemDetailContainer from "./containers/ItemDetailContainer";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
+import Footer from "./components/SocialMedia";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SocialMedia from "./components/SocialMedia";
 
 
 const App = () => {
   return (
     <BrowserRouter>
       <NavBar />
+      <SocialMedia/>
       <Routes>
         <Route exact path={'/'} element={<Home greeting={"Bienvenidos a Alcohommerce"} />}/>
         <Route exact path={'/catalogue'} element={<ItemListContainer />} />
@@ -19,6 +22,7 @@ const App = () => {
         <Route exact path={"/item/:id"} element={<ItemDetailContainer />} />
         <Route exact path={"/cart"} element={<Cart />} />
       </Routes>
+      
     </BrowserRouter>
   );
 };

@@ -1,26 +1,36 @@
 import React from 'react';
-import {Heading,
-  Button
-} from "@chakra-ui/react";
-import { Link } from 'react-router-dom'
+import { Heading, Button, Flex, Box, Text } from "@chakra-ui/react";
+import { Link } from 'react-router-dom';
 
 const Item = ({ item }) => {
   return (
-    <div>
-      
-      <img src={item.pictureUrl} alt={item.title + " " + item.brand} width="180px" height="auto" />
-      <Heading as='h3' size='md'>{item.title}</Heading>
-      <Heading as='h4' size='md'>{item.brand}</Heading>
-      <p>Precio: ${item.price}</p>
-      <Link to={"/item/" + item.id}>
-      <Button colorScheme='blue'>Ver Detalle</Button>
-      </Link>
-    </div>
+    <Box p={4} borderWidth="1px" borderRadius="lg" overflow="hidden">
+      <Box w="180px" h="180px">
+        <img src={item.pictureUrl} alt={item.title + " " + item.brand} width="100%" height="100%" />
+      </Box>
+      <Heading  size='xs'>{item.title}</Heading>
+      <Heading  size='md' mb={4}>{item.brand}</Heading>
+      <Text mb={6}>Precio: ${item.price}</Text>
+      <Flex justify="center" mt="auto">
+        <Link to={"/item/" + item.id}>
+          <Button  colorScheme='green'>Ver Detalle</Button>
+        </Link>
+      </Flex>
+    </Box>
   );
 };
 
 export default Item;
-      
-      
+
+
+
+
+
+
+
+
+
+
+
 
 

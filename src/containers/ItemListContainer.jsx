@@ -28,9 +28,9 @@ const ItemListContainer = () => {
   const categoryFilter = items.filter((item) => item.category === category);
 
   return (
-    <section>
+    <>
        {category ? <ItemList items={categoryFilter} /> : <ItemList items={items} />}
-    </section>
+    </>
   );
 };
 
