@@ -4,7 +4,6 @@ import ItemListContainer from "./containers/ItemListContainer";
 import ItemDetailContainer from "./containers/ItemDetailContainer";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
-import Footer from "./components/SocialMedia";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SocialMedia from "./components/SocialMedia";
 
