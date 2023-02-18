@@ -13,7 +13,7 @@ import { Icon,
 } from '@chakra-ui/icons'
 
 
-function ItemCount({ stock, initial, onAdd }) {
+function ItemCount({ stock, initial}) {
   const [count, setCount] = useState(initial);
 
   const sumar = () => {
@@ -37,7 +37,7 @@ function ItemCount({ stock, initial, onAdd }) {
             variant="outline" ml={4} mr={4}/>
       
           {count >= initial && (
-            <Button colorScheme='green' size="sm"  fontSize="lg" /* onClick={() => onAdd(count)} */>
+            <Button colorScheme='green' size="sm"  fontSize="lg">
               Agregar al carrito
             </Button>
           )}
