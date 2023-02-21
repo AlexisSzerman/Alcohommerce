@@ -8,7 +8,7 @@ const Item = ({ item }) => {
       <Box w="180px" h="180px">
         <img src={item.pictureUrl} alt={item.title + " " + item.brand} width="100%" height="100%" />
       </Box>
-      <Heading  size='xs'>{item.title}</Heading>
+      <Heading  size='xs' mt={4}>{item.title}</Heading>
       <Heading  size='md' mb={4}>{item.brand}</Heading>
       <Text mb={6}>Precio: ${item.price}</Text>
       <Flex justify="center" mt="auto">
