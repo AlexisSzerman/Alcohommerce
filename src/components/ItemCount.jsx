@@ -16,11 +16,11 @@ import { Icon,
 function ItemCount({ stock, initial}) {
   const [count, setCount] = useState(initial);
 
-  const sumar = () => {
+  const increase = () => {
     if (count < stock) setCount(count + 1);
   };
 
-  const restar = () => {
+  const decrease = () => {
     if (count - 1 >= initial) setCount(count - 1);
   };
 
@@ -28,12 +28,12 @@ function ItemCount({ stock, initial}) {
     
 
         <Flex minWidth="max-content" alignItems="center">
-          <IconButton icon={<MinusIcon /> } onClick={restar} colorScheme="teal"
+          <IconButton icon={<MinusIcon /> } onClick={decrease} colorScheme="teal"
             variant="outline" mr={4}/>
     
           <Text>{count}</Text>
       
-          <IconButton icon={<AddIcon/>} onClick={sumar} colorScheme="teal"
+          <IconButton icon={<AddIcon/>} onClick={increase} colorScheme="teal"
             variant="outline" ml={4} mr={4}/>
       
           {count >= initial && (

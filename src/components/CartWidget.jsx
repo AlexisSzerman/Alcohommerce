@@ -1,8 +1,11 @@
-import React from "react";
+import {useContext} from "react";
 import { Icon, Box } from "@chakra-ui/react"; 
 import { BsCart4 } from "react-icons/bs";
+import { CartContext } from "../contexts/CartContext";
+
 
 const CartWidget = () => {
+  const { cartTotal } = useContext(CartContext)
   return (
    
    <Box position="relative" display="inline-block" mr={4} border='1px' borderColor='gray.200' borderRadius={4} p={2} _hover={{ bg: "green.400", color: "white" }}>
@@ -21,9 +24,11 @@ const CartWidget = () => {
         fontWeight="bold"
         lineHeight="1.2"
       >
-        2
+        {cartTotal ()}
       </Box>
     </Box>
   );
 };
 export default CartWidget;
+
+

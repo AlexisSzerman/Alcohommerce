@@ -9,11 +9,25 @@ import {
   Tabs, 
   TabList, 
   Tab,
-  Image,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { FaBeer, FaWineBottle, FaCocktail } from "react-icons/fa";
+import { motion } from "framer-motion";
 
+
+const CocktailIcon = () => {
+  return (
+    <motion.span
+      animate={{ rotate: [0, 10, -15, 15, -10, 0] }}
+      transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 2 }}
+      style={{ display: "inline-block" }}
+    >
+      <span role="img" aria-label="cocktail">
+        🍸
+      </span>
+    </motion.span>
+  );
+};
 
 const NavBar = () => {
   return (
@@ -25,7 +39,7 @@ const NavBar = () => {
             
             <Spacer />
             <Link to="/">
-              <Heading>🍸 Alcohommerce</Heading>
+              <Heading><CocktailIcon /> Alcohommerce</Heading>
             </Link>
             <Spacer />
             
@@ -74,7 +88,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-       
-            
 
