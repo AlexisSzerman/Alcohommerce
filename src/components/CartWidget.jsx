@@ -5,11 +5,8 @@ import { CartContext } from "../contexts/CartContext";
 
 
 const CartWidget = () => {
-  const {cart, setCart } = useContext(CartContext);
+  const {cart, cartTotal } = useContext(CartContext);
   
-  const cartTotal = () => {
-    return cart.reduce((total, item) => total += item.quantity, 0)
-}
   return (
     <Box
       position="relative"
@@ -43,6 +40,7 @@ const CartWidget = () => {
     </Box>
   );
 };
+ 
 
 export default CartWidget;
 

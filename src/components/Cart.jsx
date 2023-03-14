@@ -27,9 +27,9 @@ const orderNumber = Math.floor(Math.random() * 1000000000);
 const Cart = () => {
   const { cart, cartTotal, priceTotal,  clearCart, removeItem } = useContext(CartContext)
 
-  if (cartTotal() === 0) {
-    return (
-      <>
+  return (
+    <>
+      {cartTotal() === 0 ? (
         <Center height="80vh">
           <Flex flexDirection="column" alignItems="center">
             <Heading>Todavía no agregaste productos</Heading>
@@ -42,41 +42,36 @@ const Cart = () => {
             </Link>
           </Flex>
         </Center>
-      </>
-    );
-  }
+      ) : (
+        <>
+          <Box>
+            <Center mt={4} mb={6}>
+              <Heading>Completa tus datos para confirmar el pedido</Heading>
+            </Center>
+          </Box>
 
-
-  return (
-    <>
-      
-
-      <Box>
-        <Center mt={4} mb={6}>
-          <Heading>Completa tus datos para confirmar el pedido</Heading>
-        </Center>
-      </Box>
-
-      <Container>
-        <Center>
-          <Stack spacing={4}>
-            <Input placeholder="Nombre y Apellido" />
-            <Input type="email" placeholder="Correo electrónico" />
-            <Input placeholder="Dirección" />
-            <Checkbox>Envío en el día</Checkbox>
-            <InputGroup>
-              <InputLeftAddon children="+011" />
-              <Input type="tel" placeholder="Número de teléfono" />
-            </InputGroup>
-            <Box color="grey">Pedido Número: {orderNumber}</Box>
-            <Button colorScheme="green" variant="outline">
-              Confirmar Pedido
-            </Button>
-          </Stack>
-        </Center>
-      </Container>
+          <Container>
+            <Center>
+              <Stack spacing={4}>
+                <Input placeholder="Nombre y Apellido" />
+                <Input type="email" placeholder="Correo electrónico" />
+                <Input placeholder="Dirección" />
+                <Checkbox>Envío en el día</Checkbox>
+                <InputGroup>
+                  <InputLeftAddon children="+011" />
+                  <Input type="tel" placeholder="Número de teléfono" />
+                </InputGroup>
+                <Box color="grey">Pedido Número: {orderNumber}</Box>
+                <Button colorScheme="green" variant="outline">
+                  Confirmar Pedido
+                </Button>
+              </Stack>
+            </Center>
+          </Container>
+        </>
+      )}
     </>
   );
 };
 
-export default Cart; 
+export default Cart;
