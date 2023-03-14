@@ -43,7 +43,7 @@ const ItemDetail = ({ product }) => {
 
               <CardFooter>
                 <Center flex={1} justifyContent="center">
-                  <ItemCount stock={item.stock} initial={1} />
+                  <ItemCount stock={item.stock} />
                 </Center>
               </CardFooter>
             </Card>

@@ -6,7 +6,7 @@
         "description": "Vodka Smirnoff Original 700ml - Origen: USA",
         "price": 1500,
         "category":"Espirituosas",
-        "stock": 40,
+        "stock": 5,
         "pictureUrl": "https://images2.imgbox.com/1a/73/pWM8Cb6u_o.png"
     },
     {
@@ -16,7 +16,7 @@
         "description": "Vodka Stolichnaya Original 1L - Origen: Letonia",
         "price": 12000,
         "category":"Espirituosas",
-        "stock": 5,
+        "stock": 3,
         "pictureUrl": "https://images2.imgbox.com/ed/b0/QXsV6sLw_o.png"
     },
     {
@@ -26,7 +26,7 @@
         "description": "Vodka Skyy Original 700ml - Origen: USA",
         "price": 1400,
         "category":"Espirituosas",
-        "stock": 30,
+        "stock": 6,
         "pictureUrl": "https://images2.imgbox.com/75/cf/DBl6vKgZ_o.png"
     },
     {
@@ -36,7 +36,7 @@
         "description": "Vodka Sernova Original 700ml - Origen: Italia",
         "price": 1200,
         "category":"Espirituosas",
-        "stock": 25,
+        "stock": 2,
         "pictureUrl": "https://images2.imgbox.com/49/d7/YMAcBmV3_o.png"
     },
     {
@@ -46,7 +46,7 @@
         "description": "Ron Barceló Gran añejo 750ml - Origen: República Dominicana",
         "price": 8500,
         "category":"Espirituosas",
-        "stock": 15,
+        "stock": 2,
         "pictureUrl": "https://images2.imgbox.com/92/c4/D9urxbLy_o.png"
     },
     {
@@ -56,7 +56,7 @@
         "description": "Ron Bacardí Carta Blanca 750ml - Origen: Puerto Rico",
         "price": 3500,
         "category":"Espirituosas",
-        "stock": 35,
+        "stock": 3,
         "pictureUrl": "https://images2.imgbox.com/a4/3e/EnGusgzS_o.png"
     },
     {
@@ -66,7 +66,7 @@
         "description": "Ron Havana Club Añejo 3 años 750ml - Origen: Cuba",
         "price": 3000,
         "category":"Espirituosas",
-        "stock": 45,
+        "stock": 5,
         "pictureUrl": "https://images2.imgbox.com/04/a7/0r8pZnpt_o.png"
     },
     {
@@ -76,7 +76,7 @@
         "description": "Whiskey Bourbon Jack Daniels Old N°7 750ml - Origen: USA",
         "price": 15000,
         "category":"Espirituosas",
-        "stock": 12,
+        "stock": 2,
         "pictureUrl": "https://images2.imgbox.com/07/5f/OFEc1HKj_o.png"
     },
     {
@@ -86,7 +86,7 @@
         "description": "Whiskey Scotch Johnnie Walker Red Label 1L - Origen: Escocia",
         "price": 6200,
         "category":"Espirituosas",
-        "stock": 40,
+        "stock": 4,
         "pictureUrl": "https://images2.imgbox.com/16/e1/280Gi5Ql_o.png"
     },
     {
@@ -96,7 +96,7 @@
         "description": "Whiskey Scotch Johnnie Walker Black Label 1L - Origen: Escocia",
         "price": 12300,
         "category":"Espirituosas",
-        "stock": 15,
+        "stock": 5,
         "pictureUrl": "https://images2.imgbox.com/d4/76/NGJQxpVE_o.png"
     },
     {
@@ -106,7 +106,7 @@
         "description": "Vino El Enemigo Malbec De Aleanna 750ml - Origen: Gualtallary, Mendoza" ,
         "price": 6500,
         "category":"Vinos y Espumantes",
-        "stock": 5,
+        "stock": 3,
         "pictureUrl": "https://images2.imgbox.com/94/f2/mgnlDiaC_o.png"
     },
     {
@@ -116,7 +116,7 @@
         "description": "Vino Tinto Luigi Bosca Malbec 750ml - Origen: Luján de Cuyo, Mendoza",
         "price": 2500,
         "category":"Vinos y Espumantes",
-        "stock": 8,
+        "stock": 2,
         "pictureUrl": "https://images2.imgbox.com/25/5d/g0l3uxMI_o.png"
     },
     {
@@ -126,7 +126,7 @@
         "description": "Vino Tinto Trumpeter Malbec 750ml Botella Rutini Wines - Origen: Tupungato, Mendoza",
         "price": 1500,
         "category":"Vinos y Espumantes",
-        "stock": 20,
+        "stock": 5,
         "pictureUrl": "https://images2.imgbox.com/51/db/Hyiimwjj_o.png"
     },
     {
@@ -136,7 +136,7 @@
         "description": "Champagne Nieto Senetiner Brut Nature - Origen: Luján de Cuyo, Mendoza",
         "price": 2200,
         "category":"Vinos y Espumantes",
-        "stock": 20,
+        "stock": 6,
         "pictureUrl": "https://images2.imgbox.com/31/ea/yfYCmxfL_o.png"
     },
     {
@@ -146,7 +146,7 @@
         "description": "Matías Riccitelli Kung Fu Pet Nat 2022 - Origen: Gualtallary, Mendoza",
         "price": 6500,
         "category":"Vinos y Espumantes",
-        "stock": 5,
+        "stock": 2,
         "pictureUrl": "https://images2.imgbox.com/ee/02/r6XU6urn_o.png"
     }, 
     {
@@ -155,7 +155,7 @@
         "brand": "Andes Origen",
         "description": "Cerveza Andes Origen IPA rubia lata 473mL - Pack 6 unidades",
         "price": 2200,
-        "stock": 30,
+        "stock": 5,
         "category":"Cervezas",
         "pictureUrl": "https://http2.mlstatic.com/D_NQ_NP_611494-MLA50761567301_072022-O.webp"
     },
@@ -166,7 +166,7 @@
         "description": "Cerveza Quilmes Lata 473ml Clasica - Pack 6 unidades",
         "price": 1300,
         "category":"Cervezas",
-        "stock": 130,
+        "stock": 10,
         "pictureUrl": "https://http2.mlstatic.com/D_NQ_NP_813838-MLA52959313688_122022-O.webp"
     },
     {
@@ -176,7 +176,7 @@
         "description": "Cerveza Patagonia Bohemian Pilsener Lata 410ml - Pack 6 unidades",
         "price": 2300,
         "category":"Cervezas",
-        "stock": 20,
+        "stock": 3,
         "pictureUrl": "https://http2.mlstatic.com/D_NQ_NP_849618-MLA53710615713_022023-O.webp"
     },
     {
@@ -186,7 +186,7 @@
         "description": "Cerveza Stella Artois Noire Lata 473ml - Pack 6 unidades",
         "price": 1800,
         "category":"Cervezas",
-        "stock": 25,
+        "stock": 5,
         "pictureUrl": "https://http2.mlstatic.com/D_NQ_NP_919428-MLA51577102497_092022-O.webp"
     },
     {
@@ -196,7 +196,7 @@
         "description": "Cerveza Budweiser Lata 410Ml - Pack 6 unidades",
         "price": 1600,
         "category":"Cervezas",
-        "stock": 50,
+        "stock": 5,
         "pictureUrl": "https://http2.mlstatic.com/D_NQ_NP_837447-MLA53456672615_012023-O.webp"
     }
 ]
