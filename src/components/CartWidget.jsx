@@ -34,7 +34,7 @@ const CartWidget = () => {
           fontWeight="bold"
           lineHeight="1.2"
         >
-          {cartTotal}
+          {cartTotal ()}
         </Box>
       ) : null}
     </Box>
@@ -43,6 +43,7 @@ const CartWidget = () => {
  
 
 export default CartWidget;
+
 
 
 

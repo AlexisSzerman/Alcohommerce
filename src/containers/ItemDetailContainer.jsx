@@ -5,7 +5,7 @@ import { useParams } from "react-router";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState([]);
+  const [item, setItem] = useState([]);
 
   useEffect(() => {
     const getProductId = () => {
@@ -23,7 +23,7 @@ const ItemDetailContainer = () => {
     async function fetchingData() {
       try {
         const datosFetched = await getProductId();
-        setProduct(datosFetched);
+        setItem(datosFetched);
       } catch (err) {
         console.log(err);
       }
@@ -32,7 +32,7 @@ const ItemDetailContainer = () => {
   }, [id]);
 
 
-  return <ItemDetail product={product} />;
+  return <ItemDetail item={item} />;
 };
 
 export default ItemDetailContainer;

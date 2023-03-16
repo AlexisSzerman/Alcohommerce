@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { Link } from 'react-router-dom'
 import {
   Box,
   Input,
@@ -18,14 +16,15 @@ import {
   CardFooter,
   Text,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { CartContext } from "../contexts/CartContext";
-import { motion } from 'framer-motion';
-
-
-const orderNumber = Math.floor(Math.random() * 1000000000);
 
 const Cart = () => {
-  const { cart, cartTotal, priceTotal,  clearCart, removeItem } = useContext(CartContext)
+  const { cart, cartTotal, clearCart, removeItem} =
+    useContext(CartContext);
+  console.log(cart);
 
   return (
     <>
@@ -43,35 +42,48 @@ const Cart = () => {
           </Flex>
         </Center>
       ) : (
-        <>
-          <Box>
-            <Center mt={4} mb={6}>
-              <Heading>Completa tus datos para confirmar el pedido</Heading>
-            </Center>
-          </Box>
-
-          <Container>
-            <Center>
-              <Stack spacing={4}>
-                <Input placeholder="Nombre y Apellido" />
-                <Input type="email" placeholder="Correo electrónico" />
-                <Input placeholder="Dirección" />
-                <Checkbox>Envío en el día</Checkbox>
-                <InputGroup>
-                  <InputLeftAddon children="+011" />
-                  <Input type="tel" placeholder="Número de teléfono" />
-                </InputGroup>
-                <Box color="grey">Pedido Número: {orderNumber}</Box>
-                <Button colorScheme="green" variant="outline">
-                  Confirmar Pedido
-                </Button>
-              </Stack>
-            </Center>
-          </Container>
-        </>
-      )}
-    </>
-  );
+        
+        <Stack spacing={4} mt={4}>
+          {cart.map((item) => {
+            return (
+              <div key={item.id}>
+              <Container>
+                <Card maxW="sm">
+                  <CardHeader>
+                    <Heading size="md">{item.title}</Heading>
+                  </CardHeader>
+                  <CardBody>
+                    <Text as="b">Quantity: {item.quantity}</Text>
+                    <Text>Price: U$D {item.price}</Text>
+                  </CardBody>
+                  <CardFooter>
+                    <Button
+                      colorScheme="red"
+                      onClick={() => removeItem()}
+                    >
+                      Delete from cart
+                    </Button>
+                  </CardFooter>
+                  <Button
+                      colorScheme="red"
+                      onClick={() => clearCart()}
+                    >
+                      Vaciar carrito
+                    </Button>
+                </Card>
+              </Container>
+              </div>
+            );
+          })}
+        </Stack>
+      
+    )}
+  </>
+);
 };
 
 export default Cart;
+       
+
+
+

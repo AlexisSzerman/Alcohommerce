@@ -1,4 +1,4 @@
-import React from "react";
+import { useContext, useEffect, useState } from "react";
 import ItemCount from "../components/ItemCount";
 import {
   Center,
@@ -10,12 +10,24 @@ import {
   Text,
   CardFooter,
 } from "@chakra-ui/react";
+import {CartContext} from "../contexts/CartContext"
 
+const ItemDetail = ({ item }) => {
+  const { addItem } = useContext(CartContext)
+  const [ itemStock, setItemStock] = useState(0)
 
-const ItemDetail = ({ product }) => {
+  const onAdd = (quantity) => {
+      setItemStock(itemStock - quantity)
+      addItem(item, quantity)
+  }
+
+  useEffect(() => {
+      setItemStock(item.stock)
+  }, [item]);
+  
   return (
     <div>
-      {product.map((item) => (
+      {item.map((item) => (
         <div key={item.id}>
           <Center p="1rem">
             <Card>
@@ -43,7 +55,7 @@ const ItemDetail = ({ product }) => {
 
               <CardFooter>
                 <Center flex={1} justifyContent="center">
-                  <ItemCount stock={item.stock} />
+                  <ItemCount stock={item.stock} onAdd={onAdd} />
                 </Center>
               </CardFooter>
             </Card>
@@ -55,3 +67,5 @@ const ItemDetail = ({ product }) => {
 };
 
 export default ItemDetail;
+
+

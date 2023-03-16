@@ -1,38 +1,40 @@
-import { useState, useContext } from "react";
-import { Button, Flex, Text, IconButton } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Button, Flex, Text, IconButton, useToast, Box } from "@chakra-ui/react";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
-import { CartContext } from "../contexts/CartContext";
 
-const ItemCount = ({ stock }) => {
-  const { cart, setCart } = useContext(CartContext)
+const ItemCount = ({ stock, onAdd }) => {
   const [count, setCount] = useState(1);
+  const [itemStock, setItemStock] = useState(stock);
+  const [sold, setSold] = useState(false);
 
-  const increase = () => {
-    setCount(count + 1);
-  };
+  const increase = () => count < itemStock && setCount(count + 1);
+  const decrease = () => count > 1 && setCount(count - 1);
 
-  const decrease = () => {
-    if (count > 1) {
-      setCount(count - 1);
+  const toast = useToast();
+
+  const addToCart = () => {
+    if (count <= itemStock) {
+      setCount(1);
+      setItemStock(itemStock - count);
+      setSold(true);
+      onAdd(count);
+
+      toast({
+        position: "bottom-right",
+        render: () => (
+          <Box color="white" p={3} bg="green.500">
+            🍸Artículo agregado
+          </Box>
+        ),
+      });
     }
   };
-  
-  const isInCart = (id) => {
-    return cart.some(x => x.id === id)
-}
 
-  const addItem = (item, quantity) => {
-    if(isInCart(item.id)){
-        let pos = cart.findIndex(x => x.id === item.id)
-        cart[ pos ].quantity += quantity
-        setCart([...cart])
-    }else {
-        setCart([...cart, {...item, quantity:quantity}])
-    }
-}
+  useEffect(() => {
+    setItemStock(stock);
+  }, [stock]);
 
-
-  
   return (
     <Flex minWidth="max-content" alignItems="center">
       <IconButton
@@ -54,20 +56,31 @@ const ItemCount = ({ stock }) => {
         mr={4}
       />
 
-      {count <= stock ? (
-        <Button colorScheme="green" size="sm" fontSize="lg"  onClick={() => addItem()}>
-          Agregar al carrito
+      {sold ? (
+        <Flex flexDirection="column">
+          <Button colorScheme="green" size="sm" fontSize="lg">
+            <Link to={"/catalogue"}>Seguir Comprando</Link>
+          </Button>
+          <Button
+            colorScheme="green"
+            size="sm"
+            fontSize="lg"
+            variant="outline"
+            mt={2}
+          >
+            <Link to={"/cart"}>Terminar Compra</Link>
+          </Button>
+        </Flex>
+      ) : (
+        <Button colorScheme="green" size="sm" fontSize="lg" onClick={addToCart}>
+          Agregar Al Carrito
         </Button>
-      )  : (
-        <Button colorScheme="green" size="sm" fontSize="lg" isDisabled>
-          Sin stock suficiente
-        </Button>
-      ) 
-      
-      }
-      
+      )}
     </Flex>
   );
 };
 
-export default ItemCount; 
+export default ItemCount;
+
+
+

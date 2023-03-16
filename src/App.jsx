@@ -9,6 +9,7 @@ import SocialMedia from "./components/SocialMedia";
 import CartContextProvider from "./contexts/CartContext"
 
 
+
 const App = () => {
   return (
   <CartContextProvider>
@@ -26,6 +27,7 @@ const App = () => {
   </CartContextProvider>
   );
 };
+
 
 export default App;
 
