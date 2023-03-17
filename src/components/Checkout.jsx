@@ -42,6 +42,28 @@ const Checkout = () => {
     </>
   );
 };
-//agregar alerta de chakra UI diciendo pedido completado y que vacie el carrito
+//
 
+
+/* 
+agregar alerta de chakra UI diciendo pedido completado y que vacie el carrito
+Usar context para el clear cart
+function handleClick() {
+  functionOne();
+  functionTwo();
+}
+
+<Button onClick={handleClick}>Click me</Button>
+
+
+const handleClearCart = () => {
+  clearCart();
+  showAlert();
+};
+
+return (
+  <Button onClick={handleClearCart}>Clear Cart</Button>
+);
+
+ */
 export default Checkout;

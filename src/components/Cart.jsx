@@ -93,34 +93,34 @@ const Cart = () => {
             </Stack>
           </Container>
           <Container>
-  <Flex justifyContent="center" alignItems="center" mt={4} gap={2}>
-    <Box>
-      <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-        <Button colorScheme="red" onClick={() => setIsOpen(true)}>
-          Vaciar carrito
-        </Button>
-      </motion.div>
-    </Box>
-    <Box>
-      <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-        <Button colorScheme="green">
-          Terminar compra
-        </Button>
-      </motion.div>
-    </Box>
-  </Flex>
-  <Box mt={4}>
-    <Center>
-    <Heading size="lg">
-      Precio Total $ {priceTotal()}
-    </Heading>
-    </Center>
-  </Box>
-</Container>
-
-
-
-
+            <Flex justifyContent="center" alignItems="center" mt={4} gap={2}>
+              <Box>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Button colorScheme="red" onClick={() => setIsOpen(true)}>
+                    Vaciar carrito
+                  </Button>
+                </motion.div>
+              </Box>
+              <Box>
+              <Link to={"/checkout"}>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Button colorScheme="green">Realizar Orden</Button>
+                </motion.div>
+              </Link>
+              </Box>
+            </Flex>
+            <Box mt={4}>
+              <Center>
+                <Heading size="lg">Precio Total $ {priceTotal()}</Heading>
+              </Center>
+            </Box>
+          </Container>
 
           <AlertDialog
             isOpen={isOpen}

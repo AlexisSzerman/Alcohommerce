@@ -2,6 +2,7 @@ import ItemDetail from '../components/ItemDetail'
 import { useState, useEffect } from "react";
 import items from "/items.json";
 import { useParams } from "react-router";
+import { Flex, CircularProgress} from '@chakra-ui/react';
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
@@ -32,34 +33,23 @@ const ItemDetailContainer = () => {
     return () => setItem (undefined)
   }, [id]);
 
-  if (!item) return <></>
+  if (!item) return <Flex
+  height="100vh"
+  justifyContent="center"
+  alignItems="center"
+>
+  <CircularProgress
+    isIndeterminate
+    color="green.500"
+  />
+</Flex>
 
   return <ItemDetail item={item} />;
 };
 
 export default ItemDetailContainer;
 
-/* useEffect(() => {
-  const getProductId = () => {
-    return new Promise((resolve, reject) => {
-      if (items.length === 0) {
-        reject(new Error("No hay datos"));
-      }
-      setTimeout(() => {
-        const idFilter = items.find((item) => item.id === id);
-        if (idFilter) {
-          resolve(idFilter);
-        } else {
-          reject(new Error("No se encontró el producto"));
-        }
-      }, 2000);
-    });
-  };
-  
-  getProductId()
-    .then((result) => console.log(result))
-    .catch((error) => console.error(error));
-}, [id, items]); */
+
 
 
 
