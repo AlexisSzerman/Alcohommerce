@@ -10,9 +10,14 @@ import {
   Checkbox,
   Heading,
 } from "@chakra-ui/react";
+import { CartContext } from "../contexts/CartContext";
+import { useContext } from "react";
+
 
 const orderNumber = Math.floor(Math.random() * 1000000000);
 const Checkout = () => {
+  const { cart, clearCart } = useContext(CartContext);
+
   return (
     <>
       <Box>
@@ -42,12 +47,16 @@ const Checkout = () => {
     </>
   );
 };
-//
+
+
+export default Checkout;
+
 
 
 /* 
 agregar alerta de chakra UI diciendo pedido completado y que vacie el carrito
-Usar context para el clear cart
+Usar context para usar el clearCart ()
+
 function handleClick() {
   functionOne();
   functionTwo();
@@ -65,5 +74,21 @@ return (
   <Button onClick={handleClearCart}>Clear Cart</Button>
 );
 
- */
-export default Checkout;
+
+<Alert
+  status='success'
+  variant='subtle'
+  flexDirection='column'
+  alignItems='center'
+  justifyContent='center'
+  textAlign='center'
+  height='200px'
+>
+  <AlertIcon boxSize='40px' mr={0} />
+  <AlertTitle mt={4} mb={1} fontSize='lg'>
+    Pedido Confirmado!
+  </AlertTitle>
+  <AlertDescription maxWidth='sm'>
+    Nuestro equipo te contactará a la brevedad para coordinar el envío y el pago. Gracias por elegirnos! 
+  </AlertDescription>
+</Alert> */

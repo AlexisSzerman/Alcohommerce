@@ -80,21 +80,21 @@ import {
   Text,
   CardFooter,
 } from "@chakra-ui/react";
-import {CartContext} from "../contexts/CartContext"
+import { CartContext } from "../contexts/CartContext";
 
 const ItemDetail = ({ item }) => {
-  const { addItem } = useContext(CartContext)
-  const [ itemStock, setItemStock] = useState(0)
+  const { addItem } = useContext(CartContext);
+  const [itemStock, setItemStock] = useState(0);
 
   const onAdd = (quantity) => {
-      setItemStock(itemStock - quantity)
-      addItem(item, quantity)
-  }
+    setItemStock(itemStock - quantity);
+    addItem(item, quantity);
+  };
 
   useEffect(() => {
-      setItemStock(item.stock)
+    setItemStock(item.stock);
   }, [item]);
-  
+
   return (
     <div>
       <div key={item.id}>
@@ -109,16 +109,12 @@ const ItemDetail = ({ item }) => {
               <Stack mt="6" spacing="3">
                 <Heading size="md">{item.title}</Heading>
                 <Heading size="xl">{item.brand}</Heading>
-                <Text>
-                  {item.description}
-                </Text>
-
-                <Text color="red.600">
-                  Stock disponible: {item.stock} u.
-                </Text>
-                <Text fontSize="xl">
-                 Precio: ${item.price}
-                </Text>
+                <Text>{item.description}</Text>
+                <Text>Stock disponible: {item.stock} u.</Text>
+                {item.stock <= 3 && (
+                  <Text color="red.600">Apurate, quedan pocas unidades!</Text>
+                )}
+                <Text fontSize="xl">Precio: ${item.price}</Text>
               </Stack>
             </CardBody>
 

@@ -3,6 +3,7 @@ import ItemList from "../components/ItemList";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Flex, CircularProgress } from "@chakra-ui/react";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
@@ -10,55 +11,31 @@ const ItemListContainer = () => {
   const { categoryId } = useParams();
 
   useEffect(() => {
-    const fetchItems = async () => {
-      try {
-        const response = await fetch("../items.json");
-        const data = await response.json();
-        setTimeout(() => {
-          setItems(data);
-          setIsLoading(false);
-        }, 2000); 
-        if (data.length === 0) {
-          return new Error("No hay datos");
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchItems();
+    const db = getFirestore();
+    const itemsCollection = collection(db, "bebidas");
+    getDocs(itemsCollection).then((snapshot) => {
+      const doc = snapshot.docs.map((doc) => ({...doc.data(), id:doc.id}));
+      setItems(doc);
+      setIsLoading(false);
+    });
   }, []);
+  
 
   const categoryFilter = items.filter((item) => item.category === categoryId);
 
   return (
     <>
       {isLoading ? (
-        <Flex
-        height="100vh"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <CircularProgress
-          isIndeterminate
-          color="green.500"
-        />
-      </Flex>
+        <Flex height="100vh" justifyContent="center" alignItems="center">
+          <CircularProgress isIndeterminate color="green.500" />
+        </Flex>
+      ) : categoryId ? (
+        <ItemList items={categoryFilter} />
       ) : (
-        categoryId ? <ItemList items={categoryFilter} /> : <ItemList items={items} />
+        <ItemList items={items} />
       )}
     </>
   );
 };
 
 export default ItemListContainer;
-
-
-
-
-
-
-
-
-
-
-

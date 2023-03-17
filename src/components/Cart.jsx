@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   AlertDialog,
   AlertDialogBody,
@@ -17,9 +16,13 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { useContext, useRef } from "react";
+import { useState, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../contexts/CartContext";
+import { DeleteIcon } from '@chakra-ui/icons'
+
+
+
 
 const Cart = () => {
   const { cart, cartTotal, clearCart, removeItem, priceTotal, priceSubtotal } =
@@ -64,8 +67,8 @@ const Cart = () => {
                         mr={4}
                       />
                       <Stack>
+                        <Heading size="sm">{item.brand}</Heading>
                         <Heading size="sm">{item.title}</Heading>
-                        <Text>{item.brand}</Text>
                       </Stack>
                     </Box>
                     <Box>
@@ -83,7 +86,7 @@ const Cart = () => {
                           colorScheme="red"
                           onClick={() => removeItem(item.id)}
                         >
-                          Eliminar
+                          <DeleteIcon/>
                         </Button>
                       </motion.div>
                     </Box>
@@ -110,7 +113,7 @@ const Cart = () => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Button colorScheme="green">Realizar Orden</Button>
+                  <Button colorScheme="green">Realizar Pedido</Button>
                 </motion.div>
               </Link>
               </Box>
@@ -150,3 +153,5 @@ const Cart = () => {
 };
 
 export default Cart;
+
+
