@@ -1,4 +1,4 @@
-/* import {
+import {
   Box,
   Input,
   Container,
@@ -44,4 +44,4 @@ const Checkout = () => {
 };
 //agregar alerta de chakra UI diciendo pedido completado y que vacie el carrito
 
-export default Checkout; */
+export default Checkout;
