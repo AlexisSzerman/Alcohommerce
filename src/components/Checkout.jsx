@@ -1,3 +1,8 @@
+import { useContext, useState } from "react";
+import { CartContext } from "../contexts/CartContext";
+import { collection, getFirestore, addDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+
 import {
   Box,
   Input,
@@ -7,16 +12,58 @@ import {
   InputGroup,
   InputLeftAddon,
   Button,
-  Checkbox,
   Heading,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Text,
 } from "@chakra-ui/react";
-import { CartContext } from "../contexts/CartContext";
-import { useContext } from "react";
 
-
-const orderNumber = Math.floor(Math.random() * 1000000000);
 const Checkout = () => {
-  const { cart, clearCart } = useContext(CartContext);
+  const { cart, clearCart, priceTotal } = useContext(CartContext);
+  const [orderId, setOrderId] = useState(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const handleAccept = () => {
+    navigate("/catalogue");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (name === "" || email === "" || phone === "") {
+      alert("No pueden existir campos vacios");
+    } else {
+      const db = getFirestore();
+      const ordersCollection = collection(db, "order");
+
+      const order = {
+        buyer: { name: name, phone: phone, email: email },
+        items: cart.map((item) => ({
+          id: item.id,
+          title: item.title,
+          brand: item.brand,
+          quantity: item.quantity,
+          price: item.price,
+        })),
+        total: priceTotal(),
+      };
+      addDoc(ordersCollection, order).then(({ id }) => setOrderId(id));
+      setIsModalOpen(true);
+    }
+
+    clearCart();
+  };
 
   return (
     <>
@@ -25,70 +72,61 @@ const Checkout = () => {
           <Heading>Completa tus datos para confirmar el pedido</Heading>
         </Center>
       </Box>
-
       <Container>
         <Center>
-          <Stack spacing={4}>
-            <Input placeholder="Nombre y Apellido" />
-            <Input type="email" placeholder="Correo electrónico" />
-            <Input placeholder="Dirección" />
-            <Checkbox>Envío en el día</Checkbox>
-            <InputGroup>
-              <InputLeftAddon children="+011" />
-              <Input type="tel" placeholder="Número de teléfono" />
-            </InputGroup>
-            <Box color="grey">Pedido Número: {orderNumber}</Box>
-            <Button colorScheme="green" variant="outline">
-              Confirmar Pedido
-            </Button>
-          </Stack>
+          <form onSubmit={handleSubmit}>
+            <Stack spacing={4} borderColor="green.500">
+              <Input
+                placeholder="Nombre y Apellido"
+                onChange={(e) => setName(e.target.value)}
+              />
+              <Input
+                type="email"
+                placeholder="Correo electrónico"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <InputGroup>
+                <InputLeftAddon children="+011" />
+                <Input
+                  type="tel"
+                  placeholder="Número de teléfono"
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+              </InputGroup>
+              <Text size="md">Total de la orden $ {priceTotal()}</Text>
+              <Button
+                colorScheme="green"
+                variant="outline"
+                type="submit"
+                onClick={handleModal}
+                isDisabled={priceTotal() === 0}
+              >
+                Confirmar Pedido
+              </Button>
+            </Stack>
+          </form>
         </Center>
       </Container>
+
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={handleModal}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Pedido n°{orderId} confirmado!</ModalHeader>
+            <ModalBody>
+              Nuestro equipo te contactará a la brevedad para coordinar el envío
+              y el pago. Gracias por elegirnos {name}!
+            </ModalBody>
+            <ModalFooter>
+              <Button colorScheme="green" onClick={handleAccept}>
+                Aceptar
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      )}
     </>
   );
 };
 
-
 export default Checkout;
-
-
-
-/* 
-agregar alerta de chakra UI diciendo pedido completado y que vacie el carrito
-Usar context para usar el clearCart ()
-
-function handleClick() {
-  functionOne();
-  functionTwo();
-}
-
-<Button onClick={handleClick}>Click me</Button>
-
-
-const handleClearCart = () => {
-  clearCart();
-  showAlert();
-};
-
-return (
-  <Button onClick={handleClearCart}>Clear Cart</Button>
-);
-
-
-<Alert
-  status='success'
-  variant='subtle'
-  flexDirection='column'
-  alignItems='center'
-  justifyContent='center'
-  textAlign='center'
-  height='200px'
->
-  <AlertIcon boxSize='40px' mr={0} />
-  <AlertTitle mt={4} mb={1} fontSize='lg'>
-    Pedido Confirmado!
-  </AlertTitle>
-  <AlertDescription maxWidth='sm'>
-    Nuestro equipo te contactará a la brevedad para coordinar el envío y el pago. Gracias por elegirnos! 
-  </AlertDescription>
-</Alert> */

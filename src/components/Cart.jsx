@@ -14,12 +14,14 @@ import {
   Image,
   Stack,
   Text,
+  Icon,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useState, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../contexts/CartContext";
 import { DeleteIcon } from '@chakra-ui/icons'
+import { BsCart4 } from "react-icons/bs";
 
 
 
@@ -132,12 +134,12 @@ const Cart = () => {
           >
             <AlertDialogOverlay />
             <AlertDialogContent>
-              <AlertDialogHeader>Vaciar carrito</AlertDialogHeader>
+              <AlertDialogHeader>Vaciar carrito <Icon as={BsCart4} boxSize={6}/></AlertDialogHeader>
               <AlertDialogBody>
                 ¿Estás seguro de que querés vaciar el carrito?
               </AlertDialogBody>
               <AlertDialogFooter>
-                <Button ref={cancelRef} onClick={onClose}>
+                <Button ref={cancelRef} colorScheme="green" onClick={onClose}>
                   Cancelar
                 </Button>
                 <Button colorScheme="red" onClick={clearCart} ml={3}>
