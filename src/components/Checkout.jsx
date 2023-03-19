@@ -31,6 +31,7 @@ const Checkout = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
+
   const handleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -114,8 +115,9 @@ const Checkout = () => {
           <ModalContent>
             <ModalHeader>Pedido n°{orderId} confirmado!</ModalHeader>
             <ModalBody>
-              Nuestro equipo te contactará a la brevedad para coordinar el envío
-              y el pago. Gracias por elegirnos {name}!
+            Gracias por elegirnos {name}! 
+            Te contactaremos a la brevedad a {email} para coordinar el envío
+            y el pago. 
             </ModalBody>
             <ModalFooter>
               <Button colorScheme="green" onClick={handleAccept}>
