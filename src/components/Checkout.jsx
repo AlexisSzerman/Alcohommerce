@@ -31,10 +31,10 @@ const Checkout = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
-
   const handleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
+
 
   const handleAccept = () => {
     navigate("/catalogue");
@@ -42,9 +42,7 @@ const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name === "" || email === "" || phone === "") {
-      alert("No pueden existir campos vacios");
-    } else {
+    
       const db = getFirestore();
       const ordersCollection = collection(db, "order");
 
@@ -61,7 +59,7 @@ const Checkout = () => {
       };
       addDoc(ordersCollection, order).then(({ id }) => setOrderId(id));
       setIsModalOpen(true);
-    }
+    
 
     clearCart();
   };
@@ -100,7 +98,7 @@ const Checkout = () => {
                 variant="outline"
                 type="submit"
                 onClick={handleModal}
-                isDisabled={priceTotal() === 0}
+                isDisabled={priceTotal() === 0 || name === "" || email === "" || phone === ""}
               >
                 Confirmar Pedido
               </Button>
