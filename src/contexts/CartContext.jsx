@@ -3,6 +3,8 @@ import React, { createContext, useState } from "react";
 export const CartContext = createContext()
 
 const CartContextProvider = ({children}) => {
+    //Arme acá todas las funciones que tuvieran que ver con el cart para tenerlas organizadas en un mismo lugar y poder ir llamandolas en diferentes componentes
+    
     const [ cart, setCart ] = useState([])
 
     const isInCart = (id) => {

@@ -28,12 +28,13 @@ import { BsCart4 } from "react-icons/bs";
 
 const Cart = () => {
   const { cart, cartTotal, clearCart, removeItem, priceTotal, priceSubtotal } =
-    useContext(CartContext);
+    useContext(CartContext); //utilice CartContext para importar las funciones que necesitara
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => setIsOpen(false);
   const cancelRef = useRef();
-  return (
-    <>
+  
+  return ( /* Verificando si el carrito está vacío nos mande nuevamente al catalogo  */
+    <> 
       {cartTotal() === 0 ? (
         <Center height="80vh">
           <Flex flexDirection="column" alignItems="center">
@@ -104,7 +105,7 @@ const Cart = () => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  <Button colorScheme="red" onClick={() => setIsOpen(true)}>
+                  <Button colorScheme="red" onClick={() => setIsOpen(true)}> {/* Abre el alerta de confirmación para vaciar el cart*/}
                     Vaciar carrito
                   </Button>
                 </motion.div>

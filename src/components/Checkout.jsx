@@ -35,7 +35,7 @@ const Checkout = () => {
     setIsModalOpen(!isModalOpen);
   };
 
-
+  //Tuve que usar useNavigate de react router porque con link no funcionaba lo que quería realizar
   const handleAccept = () => {
     navigate("/catalogue");
   };
@@ -61,7 +61,7 @@ const Checkout = () => {
       setIsModalOpen(true);
     
 
-    clearCart();
+    clearCart(); //al mandarse la orden no solo se abre el modal que luego te redirecciona al inicio sino que tambien se vacía el carrito
   };
 
   return (
@@ -98,8 +98,8 @@ const Checkout = () => {
                 variant="outline"
                 type="submit"
                 onClick={handleModal}
-                isDisabled={priceTotal() === 0 || name === "" || email === "" || phone === ""}
-              >
+                isDisabled={priceTotal() === 0 || name === "" || email === "" || phone === ""} 
+              > {/* Verificación de estas condiciones para habilitar el boton de confirmacion de pedido */}
                 Confirmar Pedido
               </Button>
             </Stack>

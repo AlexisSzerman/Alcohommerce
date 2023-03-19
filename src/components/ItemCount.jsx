@@ -7,12 +7,13 @@ const ItemCount = ({ stock, onAdd }) => {
   const [count, setCount] = useState(1);
   const [itemStock, setItemStock] = useState(stock);
   const [sold, setSold] = useState(false);
-
+  const toast = useToast();
   const increase = () => count < itemStock && setCount(count + 1);
   const decrease = () => count > 1 && setCount(count - 1);
 
-  const toast = useToast();
 
+ 
+  //verifica si la cantidad seleccionada (count) es menor o igual al stock actual del artículo (itemStock). Si es así, actualiza los estados de count, itemStock y sold, y llama a la función onAdd con el valor de count
   const addToCart = () => {
     if (count <= itemStock) {
       setCount(1);
@@ -30,10 +31,10 @@ const ItemCount = ({ stock, onAdd }) => {
       });
     }
   };
-
+//para actualizar el estado de itemStock cuando cambia la variable stock
   useEffect(() => {
     setItemStock(stock);
-  }, [stock]);
+  }, [stock]); 
 
   return (
     <Flex minWidth="max-content" alignItems="center">

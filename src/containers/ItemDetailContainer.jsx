@@ -7,7 +7,7 @@ import { doc, getDoc, getFirestore } from "firebase/firestore";
 const ItemDetailContainer = () => {
   
   const [item, setItem] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); //para utilizar el cicular progress hasta que se complete la carga
   const { id } = useParams();
 
   useEffect(() => {
