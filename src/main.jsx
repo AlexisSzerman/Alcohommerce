@@ -6,6 +6,7 @@ import theme from "./theme"
 import '@fontsource/alata/400.css'
 import '@fontsource/open-sans/700.css'
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
 
 // Your web app's Firebase configuration
@@ -19,7 +20,12 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+
+
+// Initialize Firebase Authentication and get a reference to the service
+export const auth = getAuth(app);
+export default app;
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

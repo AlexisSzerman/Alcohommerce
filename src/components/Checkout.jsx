@@ -1,7 +1,9 @@
-import { useContext, useState } from "react";
 import { CartContext } from "../contexts/CartContext";
 import { collection, getFirestore, addDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { auth } from "../main"
+import { useContext, useState, useEffect } from "react";
+
 
 import {
   Box,
@@ -30,6 +32,13 @@ const Checkout = () => {
   const [phone, setPhone] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const user = auth.currentUser;
+    if (user) {
+      setEmail(user.email);
+    }
+  }, []);
 
   const handleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -79,11 +88,7 @@ const Checkout = () => {
                 placeholder="Nombre y Apellido"
                 onChange={(e) => setName(e.target.value)}
               />
-              <Input
-                type="email"
-                placeholder="Correo electrónico"
-                onChange={(e) => setEmail(e.target.value)}
-              />
+
               <InputGroup>
                 <InputLeftAddon children="+011" />
                 <Input
@@ -98,7 +103,7 @@ const Checkout = () => {
                 variant="outline"
                 type="submit"
                 onClick={handleModal}
-                isDisabled={priceTotal() === 0 || name === "" || email === "" || phone === ""} 
+                isDisabled={priceTotal() === 0 || name === "" || phone === ""} 
               > {/* Verificación de estas condiciones para habilitar el boton de confirmacion de pedido */}
                 Confirmar Pedido
               </Button>

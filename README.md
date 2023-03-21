@@ -16,7 +16,7 @@ Por último, aprendí a utilizar Firebase para almacenar y gestionar datos en mi
 - **React Router** 6.8.1 - configuración de rutas
 - **Chakra UI** 2.4.9 - librería de componentes
 - **Framer Motion** 8.5.5 - librería de animaciones
-- **Firebase** 9.18.0 - base de datos Firestore
+- **Firebase** 9.18.0 - base de datos Firestore y autenticación
 
 ### _Fuentes_
 ![altata font](https://www.fontmirror.com/app_public/files/t/1/featured_image/2020/12/featured_8103.jpg)
@@ -30,6 +30,11 @@ Para inicializar:
 npm run dev
 
 ```
+Para iniciar sesión:
+
+- Usuario: reactjs@coder.com
+- Contraseña: coderhouse
+
  ### _Workflow_
 
 

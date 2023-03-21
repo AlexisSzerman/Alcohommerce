@@ -33,6 +33,7 @@ const Cart = () => {
   const onClose = () => setIsOpen(false);
   const cancelRef = useRef();
   
+  
   return ( /* Verificando si el carrito está vacío nos mande nuevamente al catalogo  */
     <> 
       {cartTotal() === 0 ? (

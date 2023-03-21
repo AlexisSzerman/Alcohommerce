@@ -9,10 +9,14 @@ import {
   Tabs, 
   TabList, 
   Tab,
+  Button,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaBeer, FaWineBottle, FaCocktail } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { signOut } from "firebase/auth";
+import { auth } from "../main";
+
 
 
 const CocktailIcon = () => {
@@ -30,6 +34,19 @@ const CocktailIcon = () => {
 };
 
 const NavBar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        navigate("/");
+        alert("Cerró sesión con éxito");
+      })
+      .catch((error) => {
+        navigate("/");
+        alert("Ocurrió un error");
+      });
+  };
   return (
     <nav>
       <Box p={3}>
@@ -38,7 +55,7 @@ const NavBar = () => {
             <Box />
             
             <Spacer />
-            <Link to="/">
+            <Link to="/home">
               <Heading><CocktailIcon /> Alcohommerce</Heading>
             </Link>
             <Spacer />
@@ -75,6 +92,9 @@ const NavBar = () => {
       </Tabs>
     
             <Spacer />
+            <Box>
+          <Button colorScheme="green" onClick={handleLogout} mr="2">Cerrar Sesión</Button>
+        </Box>
            
           <Link to="/cart">
             <CartWidget />
@@ -88,4 +108,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
