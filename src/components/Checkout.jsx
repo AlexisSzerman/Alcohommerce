@@ -34,7 +34,7 @@ const Checkout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = auth.currentUser;
+    const user = auth.currentUser; //Usando este hook puedo utilizar el mail del usuario logueado
     if (user) {
       setEmail(user.email);
     }

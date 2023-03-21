@@ -13,21 +13,20 @@ import NavBar from "./components/NavBar";
 import { auth } from './main.jsx'; // import auth from main.jsx
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); //cambio de estado cuando el usuario está logueado para que se renderice la Navbar
 
   useEffect(() => {
-    // Listen for changes in authentication state
-    const unsubscribe = auth.onAuthStateChanged((user) => { // use auth from main.jsx
+    // Mira cambios en el cambio de estado del usuario
+    const unsubscribe = auth.onAuthStateChanged((user) => { 
       if (user) {
-        // User is signed in
-        setIsLoggedIn(true);
+        setIsLoggedIn(true); //Usuario logueado
       } else {
-        // User is signed out
-        setIsLoggedIn(false);
+        setIsLoggedIn(false); //Usuario sin loguear
       }
     });
 
-    // Unsubscribe when component unmounts
+
+
     return () => {
       unsubscribe();
     };
