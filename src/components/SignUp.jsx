@@ -11,6 +11,8 @@ import {
   Box,
   Heading,
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { useToast } from "@chakra-ui/react";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -18,18 +20,24 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const toast = useToast();
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         console.log(user);
         navigate("/home");
-        // ...
-      })
+        toast({
+            position: "top",
+            title: `Usuario creado correctamente`,
+            status: "success",
+            duration: 5000,
+            isClosable: false,
+          });
+        })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -39,6 +47,11 @@ const Signup = () => {
   };
 
   return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
     <Box minH="100vh">
       <Box maxW="sm" mx="auto" mt={20} bg="white" p={8} borderRadius="md">
         <Heading fontSize="2rem">🍸Alcohommerce🍸</Heading>
@@ -90,6 +103,7 @@ const Signup = () => {
         </Text>
       </Box>
     </Box>
+    </motion.div>
   );
 };
 

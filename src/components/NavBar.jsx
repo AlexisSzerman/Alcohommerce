@@ -16,6 +16,7 @@ import { FaBeer, FaWineBottle, FaCocktail } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { signOut } from "firebase/auth";
 import { auth } from "../main";
+import { useToast } from "@chakra-ui/react";
 
 
 
@@ -35,12 +36,19 @@ const CocktailIcon = () => {
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const toast = useToast();
 
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
         navigate("/");
-        alert("Cerró sesión con éxito");
+        toast({
+          position: "top",
+          title: `Cerraste sesión correctamente`,
+          status: "info",
+          duration: 5000,
+          isClosable: false,
+        });
       })
       .catch((error) => {
         navigate("/");

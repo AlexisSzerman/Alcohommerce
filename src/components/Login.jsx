@@ -13,12 +13,16 @@ import {
   Box,
   Heading
 } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { useToast } from "@chakra-ui/react";
+
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const toast = useToast();
 
   const onLogin = (e) => {
     e.preventDefault();
@@ -27,29 +31,40 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         navigate("/home");
-        alert("Usuario " + user.email + " logueado con éxito");
-      })
+        toast({
+            position: "top",
+            title: `Bienvenido ${user.email}!`,
+            status: "success",
+            duration: 5000,
+            isClosable: false,
+          });
+        })
       .catch((error) => {
         setError("Email o contraseña incorrectos");
       });
   };
 
   return (
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.5 }}
+  >
     <Box minH="100vh">
       <Box maxW="sm" mx="auto" mt={20} bg="white" p={8} borderRadius="md">
         <Heading fontSize="2rem">🍸Alcohommerce🍸</Heading>
         <Text fontSize="xl" fontWeight="semibold" textAlign="center" mt={4}>
-          Ingreso con usuario
+          Ingresá con tu usuario
         </Text>
         <form>
           <FormControl mt={4}>
-            <FormLabel>Email</FormLabel>
+            <FormLabel>Correo electrónico</FormLabel>
             <Input
               borderColor="green.500"
               type="email"
               name="email"
               required
-              placeholder="Email address"
+              placeholder="Correo electrónico"
               onChange={(e) => setEmail(e.target.value)}
             />
           </FormControl>
@@ -61,7 +76,7 @@ const Login = () => {
               type="password"
               name="password"
               required
-              placeholder="Password"
+              placeholder="Contraseña"
               onChange={(e) => setPassword(e.target.value)}
             />
           </FormControl>
@@ -84,6 +99,7 @@ const Login = () => {
         </Text>
       </Box>
     </Box>
+    </motion.div>
   );
 };
 
