@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.17",
-    "@chakra-ui/react": "^2.4.9",
+    "@chakra-ui/react": "^2.5.5",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@fontsource/alata": "^4.5.9",
     "@fontsource/open-sans": "^4.5.14",
     "firebase": "^9.18.0",
